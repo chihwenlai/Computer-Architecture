@@ -1,16 +1,22 @@
-TreeNode* invertTree(TreeNode* root) {
-    if(root==NULL){
-        return root;
-    }   
-    TreeNode* tmp;
-    if(root->left){
-        tmp = invertTree(root->left);
+class Solution {
+public:
+    int findNumbers(vector<int>& nums) {
+        int i, val;
+        val=0;
+        for(i=0; i<nums.size(); i++){
+            if((calculate(nums[i])&1)==0){
+                val=val+1;
+            }
+        }
+        return val;
     }
-    if(root->right){
-        tmp = invertTree(root->right);
+    int calculate(int a){
+        int base = 10;
+        int digit = 1;
+        while(a>=base){
+            digit = digit+1;
+            base = (base<<3)+(base<<1);
+        }
+        return digit;
     }
-    tmp = root->left;
-    root->left= root->right;
-    root->right = tmp;
-    return root;
-}
+};
