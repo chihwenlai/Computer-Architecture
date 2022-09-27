@@ -6,7 +6,7 @@ size1: .word 5
 size2: .word 4
 size3: .word 3
 startline: .string "The array has "
-endline: .string " even numbers.\n"
+endline: .string " even digit numbers.\n"
 
 .text
 main:
