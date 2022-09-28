@@ -2,10 +2,10 @@
 
 int arr1[5] = {11, 2, 52, 14, 62};
 int arr2[4] = {95, 8711, 26, 6};
-int arr3[3] = {19, 137, 55};
+int arr3[3] = {19, 137, 55, 77, 33, 22};
 int size1 = 5;
 int size2 = 4;
-int size3 = 3;
+int size3 = 6;
 
 int calculate(int a){
     int base = 10;
@@ -31,10 +31,10 @@ int findNumbers(int* nums, int size){
 int main(void){
     int save;
     save = findNumbers(arr1, size1);
-    printf("The array has %d even numbers.\n", save);
+    printf("The array has %d even digit numbers.\n", save);
     save = findNumbers(arr2, size2);
-    printf("The array has %d even numbers.\n", save);
+    printf("The array has %d even digit numbers.\n", save);
     save = findNumbers(arr3, size3);
-    printf("The array has %d even numbers.\n", save);
+    printf("The array has %d even digit numbers.\n", save);
     return 0;
 }
