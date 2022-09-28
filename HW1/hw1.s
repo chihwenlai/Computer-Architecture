@@ -1,10 +1,10 @@
 .data
 arr1: .word 11, 2, 52, 14, 62
 arr2: .word 95, 8711, 26, 6
-arr3: .word 19, 137, 55
+arr3: .word 19, 137, 55, 77, 33, 22
 size1: .word 5
 size2: .word 4
-size3: .word 3
+size3: .word 6
 startline: .string "The array has "
 endline: .string " even digit numbers.\n"
 
@@ -42,6 +42,7 @@ FLOOP:
     sw t2, 0(sp) # save t2
     mv a0, t2 # a0=arr[i]
     jal ra, calculate # do calculate function
+    mv s0, a0
     lw t2, 0(sp) # load t2
     lw t1, 4(sp) # load t1
     lw t0, 8(sp) # load t0
@@ -55,7 +56,7 @@ IFEND:
     addi t1, t1, 1 # i=i+1
     j FLOOP
 FEND:
-    mv s1, t0 # s1=val
+    mv a0, t0 # s1=val
     ret
 calculate:
     li t0, 10 # base=10
@@ -68,13 +69,14 @@ WLOOP:
     add t0, t0, t2 # t0=base<<3+base<<1
     j WLOOP
 WEND:
-    mv s0, t1
+    mv a0, t1
     ret
 print:
+    mv s0, a0
     la a0, startline
     li a7, 4
     ecall
-    mv a0, s1
+    mv a0, s0
     li a7, 1
     ecall
     la a0, endline
